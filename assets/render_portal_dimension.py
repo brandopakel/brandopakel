@@ -137,52 +137,65 @@ seam = (mat > 0.5) & (mat < 1.5) & (np.abs(qz) < 0.10) & (y < 6.0)
 glow = np.exp(-np.abs(qz) * 30.0) * np.exp(-0.10 * y) * 1.8
 col = np.where(seam[...,None], col + CYAN[None,None,:] * glow[...,None], col)
 
-# ── portal surface shader: the swirl ────────────────────────────────────────
+# ── animated portal: world rendered once above; only the portal re-shades ──
+GIF_OUT = "portal_dimension.gif"
+FRAMES, FPS = 36, 14
+OUT_W = 1280
+
 rel = p_hit - P0
 pu_h = rel @ PU; pv_h = rel @ PV
 prad = np.sqrt(pu_h**2 + pv_h**2) / PRAD
 pang = np.arctan2(pv_h, pu_h)
-# the swirl: wobbly concentric rings, dark-green troughs, lime crests
-wob = 0.045 * np.sin(pang * 3 + prad * 2.0) + 0.025 * np.sin(pang * 7 - 2.0)
-rr = np.clip(prad + wob, 0, 1.3)
-rings = 0.5 + 0.5 * np.sin(rr * 26.0 - 2.2)
-shade = np.clip(rings, 0, 1) ** 1.6
-base = GREEN_DARK[None,None,:] + (GREEN_MID - GREEN_DARK)[None,None,:] * shade[...,None]
-core = np.clip(1 - rr * 1.05, 0, 1) ** 1.3
-rim = np.exp(-((prad - 0.97) / 0.05) ** 2)
-portal_em = (base * (0.55 + 1.1 * core)[...,None]
-             + GREEN_CORE[None,None,:] * (core ** 2 * 1.1)[...,None]
-             + GREEN_CORE[None,None,:] * (rim * 2.4)[...,None])
 is_portal = mat > 1.5
-col = np.where(is_portal[...,None], portal_em, col)
 
-# ── sky ─────────────────────────────────────────────────────────────────────
+# static world with fog (portal pixels get overwritten per frame)
 elev = np.clip(rd[...,1], -0.2, 1)
 sky = SKY_B[None,None,:] + (SKY_T - SKY_B)[None,None,:] * np.clip(elev*2.4, 0, 1)[...,None]
 sq = np.floor(rd[...,:2] / np.maximum(np.abs(rd[...,2:3]), .2) * 400)
 sv = np.sin(sq[...,0]*127.1 + sq[...,1]*311.7)*43758.5453; sv -= np.floor(sv)
 stars = ((sv > 0.9975) & (rd[...,1] > 0.02)).astype(float) * (sv - 0.9975) * 380
 sky += stars[...,None] * np.array([0.85, 0.95, 1.0])
-
-img = np.where(hit[...,None], col, sky)
+world = np.where(hit[...,None], col, sky)
 fog_f = np.where(hit & ~is_portal, 1 - np.exp(-t * 0.014), 0)[...,None]
-img = img * (1 - fog_f) + FOG[None,None,:] * fog_f * 1.4
-img = np.where(~hit[...,None] & (np.abs(rd[...,1:2]) < 0.06),
-               img + FOG[None,None,:]*np.exp(-np.abs(rd[...,1:2])*40)*0.8, img)
+world = world * (1 - fog_f) + FOG[None,None,:] * fog_f * 1.4
+world = np.where(~hit[...,None] & (np.abs(rd[...,1:2]) < 0.06),
+                 world + FOG[None,None,:]*np.exp(-np.abs(rd[...,1:2])*40)*0.8, world)
+seam_emis = np.where(seam[...,None], CYAN[None,None,:] * glow[...,None] * 0.6, 0)
 
-# bloom: the portal wants to burn
-emis = np.where(is_portal[...,None], portal_em * 0.7, 0)
-emis += np.where(seam[...,None], CYAN[None,None,:] * glow[...,None] * 0.6, 0)
-e8 = Image.fromarray((np.clip(emis/ (1+emis),0,1)*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(14))
-img = img + np.asarray(e8, dtype=float)/255.0 * 0.85
-e9 = Image.fromarray((np.clip(emis/ (1+emis),0,1)*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(38))
-img = img + np.asarray(e9, dtype=float)/255.0 * 0.45
+def portal_shader(phase):
+    wob = (0.045 * np.sin(pang * 3 + prad * 2.0 + 0.6*np.sin(phase))
+           + 0.025 * np.sin(pang * 7 - 2.0 - phase))
+    rr = np.clip(prad + wob, 0, 1.3)
+    rings = 0.5 + 0.5 * np.sin(rr * 26.0 - 2.2 - phase * 2.0)
+    shade = np.clip(rings, 0, 1) ** 1.6
+    base = GREEN_DARK[None,None,:] + (GREEN_MID - GREEN_DARK)[None,None,:] * shade[...,None]
+    pulse = 1.0 + 0.10 * np.sin(phase)
+    core = np.clip(1 - rr * 1.05, 0, 1) ** 1.3
+    rim = np.exp(-((prad - 0.97) / 0.05) ** 2)
+    return (base * (0.55 + 1.1 * core * pulse)[...,None]
+            + GREEN_CORE[None,None,:] * (core ** 2 * 1.1 * pulse)[...,None]
+            + GREEN_CORE[None,None,:] * (rim * (2.0 + 0.6*np.sin(phase*2)))[...,None])
 
-lum = img @ np.array([0.2126, 0.7152, 0.0722])
-scale = (lum / (1 + lum)) / np.maximum(lum, 1e-6)
-img = img * scale[..., None]
-img = np.clip(img, 0, 1) ** (1/2.2)
-vx = (uu**2 + vv**2) * 0.16
-img *= (1 - vx)[...,None]
-Image.fromarray((img*255).astype(np.uint8)).save(OUT)
-print("saved", OUT)
+frames = []
+for f in range(FRAMES):
+    phase = 2 * np.pi * f / FRAMES
+    pem = portal_shader(phase)
+    img = np.where(is_portal[...,None], pem, world)
+    emis = np.where(is_portal[...,None], pem * 0.7, 0) + seam_emis
+    e_src = Image.fromarray((np.clip(emis/(1+emis),0,1)*255).astype(np.uint8))
+    img = img + np.asarray(e_src.filter(ImageFilter.GaussianBlur(14)), dtype=float)/255.0 * 0.85
+    img = img + np.asarray(e_src.filter(ImageFilter.GaussianBlur(38)), dtype=float)/255.0 * 0.45
+    lum = img @ np.array([0.2126, 0.7152, 0.0722])
+    scale = (lum / (1 + lum)) / np.maximum(lum, 1e-6)
+    img = np.clip(img * scale[..., None], 0, 1) ** (1/2.2)
+    vx = (uu**2 + vv**2) * 0.16
+    img *= (1 - vx)[...,None]
+    fr = Image.fromarray((img*255).astype(np.uint8)).resize(
+        (OUT_W, int(OUT_W*H/W)), Image.LANCZOS)
+    frames.append(fr.convert("P", palette=Image.ADAPTIVE, colors=256, dither=Image.FLOYDSTEINBERG))
+    print(f"frame {f+1}/{FRAMES}", flush=True)
+
+frames[0].save(GIF_OUT, save_all=True, append_images=frames[1:],
+               duration=int(1000/FPS), loop=0, optimize=True)
+import os
+print("saved", GIF_OUT, f"{os.path.getsize(GIF_OUT)/1e6:.1f} MB")
