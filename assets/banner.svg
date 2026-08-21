@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="bp@omnivest terminal — building the machine that trades on evidence">
+<style>
+  text { font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace; font-size: 15px; }
+  .dim    { fill: #7d8590; }
+  .prompt { fill: #3fb950; }
+  .path   { fill: #58a6ff; }
+  .out    { fill: #e6edf3; }
+  .gold   { fill: #d9a44a; }
+  .cyan   { fill: #3fc1e6; }
+  .l1 { opacity:0; animation: pop .01s steps(1) .3s forwards; }
+  .l2 { opacity:0; animation: pop .01s steps(1) .9s forwards; }
+  .l3 { opacity:0; animation: pop .01s steps(1) 1.7s forwards; }
+  .l4 { opacity:0; animation: pop .01s steps(1) 2.5s forwards; }
+  .l5 { opacity:0; animation: pop .01s steps(1) 3.3s forwards; }
+  .l6 { opacity:0; animation: pop .01s steps(1) 4.1s forwards; }
+  @keyframes pop { to { opacity:1; } }
+  .cursor { fill:#e6edf3; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+  .spark {
+    fill:none; stroke:#3fb950; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;
+    stroke-dasharray: 580; stroke-dashoffset: 580;
+    animation: draw 2.6s ease-out 4.3s forwards;
+  }
+  .sparkfill { fill:url(#g); opacity:0; animation: pop .8s ease-out 6.4s forwards; }
+  .enddot { opacity:0; animation: pop .01s steps(1) 6.9s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .l1,.l2,.l3,.l4,.l5,.l6,.sparkfill,.enddot { animation:none; opacity:1; }
+    .spark { animation:none; stroke-dashoffset:0; }
+    .cursor { animation:none; }
+  }
+</style>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3fb950" stop-opacity="0.22"/>
+    <stop offset="1" stop-color="#3fb950" stop-opacity="0"/>
+  </linearGradient>
+  <clipPath id="win"><rect x="8" y="8" width="944" height="284" rx="12"/></clipPath>
+</defs>
+
+<!-- terminal window -->
+<rect x="8" y="8" width="944" height="284" rx="12" fill="#0d1117" stroke="#30363d"/>
+<g clip-path="url(#win)">
+  <rect x="8" y="8" width="944" height="36" fill="#161b22"/>
+  <line x1="8" y1="44" x2="952" y2="44" stroke="#30363d"/>
+</g>
+<circle cx="34" cy="26" r="6" fill="#f85149"/>
+<circle cx="56" cy="26" r="6" fill="#d9a44a"/>
+<circle cx="78" cy="26" r="6" fill="#3fb950"/>
+<text x="480" y="31" text-anchor="middle" class="dim" font-size="13">bp@omnivest — zsh</text>
+
+<!-- session -->
+<g class="l1">
+  <text x="36" y="82"><tspan class="prompt">bp@omnivest</tspan><tspan class="dim">:</tspan><tspan class="path">~</tspan><tspan class="dim">$ </tspan><tspan class="out">whoami</tspan></text>
+</g>
+<g class="l2">
+  <text x="36" y="108" class="out">Brando Pakel — I build the machine, the machine trades the market.</text>
+</g>
+<g class="l3">
+  <text x="36" y="146"><tspan class="prompt">bp@omnivest</tspan><tspan class="dim">:</tspan><tspan class="path">~</tspan><tspan class="dim">$ </tspan><tspan class="out">make foundation</tspan></text>
+</g>
+<g class="l4">
+  <text x="36" y="172"><tspan class="cyan">go</tspan><tspan class="dim"> build ./...   # + </tspan><tspan class="gold">rust</tspan><tspan class="dim"> kernels · </tspan><tspan class="gold">c++</tspan><tspan class="dim"> books · </tspan><tspan class="gold">ocaml</tspan><tspan class="dim"> proofs · </tspan><tspan class="gold">python</tspan><tspan class="dim"> ml</tspan></text>
+</g>
+<g class="l5">
+  <text x="36" y="210"><tspan class="prompt">bp@omnivest</tspan><tspan class="dim">:</tspan><tspan class="path">~</tspan><tspan class="dim">$ </tspan><tspan class="out">tail -f nav.log</tspan></text>
+</g>
+<g class="l6">
+  <text x="36" y="236" class="dim">4 engines · paper capital · every claim is a row in a database</text>
+  <rect class="cursor" x="604" y="224" width="9" height="16"/>
+</g>
+
+<!-- nav sparkline, drawn from the live indexed-NAV shape -->
+<g transform="translate(630,196)" clip-path="url(#win)">
+  <path class="sparkfill" d="M0,52 L24,51 L52,54 L84,56 L116,55 L148,55 L180,18 L189,44 L201,42 L222,10 L241,14 L264,13 L283,20 L296,16 L313,6 L320,4 L320,64 L0,64 Z"/>
+  <path class="spark" d="M0,52 L24,51 L52,54 L84,56 L116,55 L148,55 L180,18 L189,44 L201,42 L222,10 L241,14 L264,13 L283,20 L296,16 L313,6 L320,4"/>
+  <circle class="enddot" cx="320" cy="4" r="3.5" fill="#3fb950"/>
+</g>
+</svg>
