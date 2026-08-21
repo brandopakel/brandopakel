@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="BP-CORE deep-space operations console: boot sequence nominal, awaiting instructions">
+<style>
+  text { font-family: "SFMono-Regular", "Cascadia Code", Consolas, Menlo, monospace; font-size: 15px; }
+  .cy  { fill: #56d6e0; }
+  .dim { fill: #6b7f8c; }
+  .out { fill: #d7e7ee; }
+  .amb { fill: #ffb454; }
+  .mag { fill: #d982e6; }
+  .ok  { fill: #57d99a; }
+  .l1 { opacity:0; animation: pop .01s steps(1) .4s forwards; }
+  .l2 { opacity:0; animation: pop .01s steps(1) 1.2s forwards; }
+  .l3 { opacity:0; animation: pop .01s steps(1) 2.0s forwards; }
+  .l4 { opacity:0; animation: pop .01s steps(1) 2.9s forwards; }
+  .l5 { opacity:0; animation: pop .01s steps(1) 3.8s forwards; }
+  .l6 { opacity:0; animation: pop .01s steps(1) 4.7s forwards; }
+  @keyframes pop { to { opacity:1; } }
+  .cursor { fill:#56d6e0; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+  .tw { animation: twinkle 3.4s ease-in-out infinite; }
+  .t1 { animation-delay: .9s; } .t2 { animation-delay: 1.7s; } .t3 { animation-delay: 2.6s; }
+  @keyframes twinkle { 0%,100% { opacity:.15; } 50% { opacity:.95; } }
+  .orbit { animation: orb 22s linear infinite; transform-origin: 806px 96px; }
+  @keyframes orb { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .l1,.l2,.l3,.l4,.l5,.l6 { animation:none; opacity:1; }
+    .cursor,.tw,.orbit { animation:none; }
+  }
+</style>
+<defs>
+  <radialGradient id="pg" cx="0.35" cy="0.3" r="1">
+    <stop offset="0" stop-color="#3a4f66"/><stop offset="0.6" stop-color="#1a2736"/><stop offset="1" stop-color="#0b1119"/>
+  </radialGradient>
+  <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ffb454" stop-opacity="0"/><stop offset="0.5" stop-color="#ffb454" stop-opacity="0.85"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+
+<!-- space -->
+<rect width="960" height="300" fill="#05080f"/>
+<circle cx="335.7" cy="256.8" r="0.7" fill="#cfe9f2" opacity="0.42" class="tw t0"/>
+<circle cx="639.3" cy="123.9" r="0.7" fill="#cfe9f2" opacity="0.81"/>
+<circle cx="312.5" cy="283.5" r="1.4" fill="#cfe9f2" opacity="0.35"/>
+<circle cx="529.3" cy="59.9" r="0.7" fill="#cfe9f2" opacity="0.66"/>
+<circle cx="455.8" cy="83.7" r="1.4" fill="#cfe9f2" opacity="0.43"/>
+<circle cx="354.8" cy="194.9" r="1.4" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="708.1" cy="55.8" r="0.7" fill="#cfe9f2" opacity="0.57"/>
+<circle cx="757.6" cy="93.5" r="1.4" fill="#cfe9f2" opacity="0.8"/>
+<circle cx="119.1" cy="111.4" r="0.9" fill="#cfe9f2" opacity="0.85"/>
+<circle cx="148.7" cy="47.2" r="0.9" fill="#cfe9f2" opacity="0.49" class="tw t1"/>
+<circle cx="355.0" cy="59.6" r="0.7" fill="#cfe9f2" opacity="0.49"/>
+<circle cx="869.7" cy="230.9" r="1.1" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="194.0" cy="35.7" r="1.1" fill="#cfe9f2" opacity="0.46"/>
+<circle cx="351.7" cy="187.6" r="1.1" fill="#cfe9f2" opacity="0.49"/>
+<circle cx="313.7" cy="207.4" r="1.1" fill="#cfe9f2" opacity="0.71"/>
+<circle cx="52.8" cy="96.5" r="0.9" fill="#cfe9f2" opacity="0.84"/>
+<circle cx="797.5" cy="212.0" r="0.9" fill="#cfe9f2" opacity="0.65"/>
+<circle cx="95.5" cy="136.2" r="1.4" fill="#cfe9f2" opacity="0.37"/>
+<circle cx="69.8" cy="47.8" r="1.1" fill="#cfe9f2" opacity="0.51" class="tw t2"/>
+<circle cx="814.7" cy="246.3" r="0.7" fill="#cfe9f2" opacity="0.74"/>
+<circle cx="148.9" cy="285.9" r="1.4" fill="#cfe9f2" opacity="0.29"/>
+<circle cx="502.9" cy="230.8" r="1.1" fill="#cfe9f2" opacity="0.45"/>
+<circle cx="66.6" cy="139.9" r="0.9" fill="#cfe9f2" opacity="0.81"/>
+<circle cx="644.6" cy="225.2" r="1.4" fill="#cfe9f2" opacity="0.26"/>
+<circle cx="77.6" cy="283.3" r="1.4" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="97.0" cy="172.0" r="0.9" fill="#cfe9f2" opacity="0.33"/>
+<circle cx="290.7" cy="189.4" r="0.7" fill="#cfe9f2" opacity="0.55"/>
+<circle cx="732.0" cy="114.6" r="1.1" fill="#cfe9f2" opacity="0.48" class="tw t3"/>
+<circle cx="879.6" cy="223.4" r="1.1" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="209.2" cy="215.1" r="1.1" fill="#cfe9f2" opacity="0.75"/>
+<circle cx="349.8" cy="266.8" r="1.1" fill="#cfe9f2" opacity="0.74"/>
+<circle cx="695.1" cy="118.0" r="0.7" fill="#cfe9f2" opacity="0.51"/>
+<circle cx="261.2" cy="96.4" r="1.1" fill="#cfe9f2" opacity="0.57"/>
+<circle cx="255.4" cy="257.1" r="1.4" fill="#cfe9f2" opacity="0.58"/>
+<circle cx="610.9" cy="190.6" r="1.4" fill="#cfe9f2" opacity="0.56"/>
+<circle cx="159.2" cy="196.4" r="0.7" fill="#cfe9f2" opacity="0.83"/>
+<circle cx="727.1" cy="78.3" r="1.1" fill="#cfe9f2" opacity="0.58" class="tw t0"/>
+<circle cx="233.4" cy="38.9" r="0.7" fill="#cfe9f2" opacity="0.74"/>
+<circle cx="633.2" cy="69.5" r="1.4" fill="#cfe9f2" opacity="0.29"/>
+<circle cx="655.6" cy="253.8" r="1.4" fill="#cfe9f2" opacity="0.51"/>
+<circle cx="825.1" cy="233.5" r="0.9" fill="#cfe9f2" opacity="0.69"/>
+<circle cx="590.7" cy="137.0" r="0.9" fill="#cfe9f2" opacity="0.57"/>
+<circle cx="884.1" cy="224.6" r="0.7" fill="#cfe9f2" opacity="0.62"/>
+<circle cx="290.0" cy="270.9" r="0.7" fill="#cfe9f2" opacity="0.77"/>
+<circle cx="218.0" cy="237.7" r="1.1" fill="#cfe9f2" opacity="0.85"/>
+<circle cx="112.6" cy="111.0" r="1.1" fill="#cfe9f2" opacity="0.4" class="tw t1"/>
+<circle cx="921.3" cy="146.7" r="0.9" fill="#cfe9f2" opacity="0.74"/>
+<circle cx="878.6" cy="134.2" r="0.9" fill="#cfe9f2" opacity="0.75"/>
+<circle cx="149.2" cy="36.3" r="0.9" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="38.8" cy="105.2" r="0.9" fill="#cfe9f2" opacity="0.76"/>
+<circle cx="500.6" cy="176.0" r="1.1" fill="#cfe9f2" opacity="0.5"/>
+<circle cx="782.9" cy="204.8" r="0.7" fill="#cfe9f2" opacity="0.28"/>
+<circle cx="575.6" cy="107.5" r="0.9" fill="#cfe9f2" opacity="0.26"/>
+<circle cx="903.2" cy="155.6" r="1.1" fill="#cfe9f2" opacity="0.66"/>
+<circle cx="473.1" cy="229.1" r="0.7" fill="#cfe9f2" opacity="0.46" class="tw t2"/>
+<circle cx="712.5" cy="109.9" r="1.1" fill="#cfe9f2" opacity="0.76"/>
+<circle cx="720.3" cy="85.2" r="0.7" fill="#cfe9f2" opacity="0.29"/>
+<circle cx="616.4" cy="111.1" r="0.9" fill="#cfe9f2" opacity="0.34"/>
+<circle cx="723.2" cy="37.5" r="1.4" fill="#cfe9f2" opacity="0.54"/>
+<circle cx="281.6" cy="76.6" r="0.9" fill="#cfe9f2" opacity="0.53"/>
+<circle cx="42.6" cy="124.9" r="0.7" fill="#cfe9f2" opacity="0.62"/>
+<circle cx="831.7" cy="190.7" r="0.9" fill="#cfe9f2" opacity="0.79"/>
+<circle cx="268.4" cy="218.9" r="1.1" fill="#cfe9f2" opacity="0.84"/>
+<circle cx="272.8" cy="108.8" r="0.9" fill="#cfe9f2" opacity="0.45" class="tw t3"/>
+<circle cx="261.0" cy="144.1" r="1.4" fill="#cfe9f2" opacity="0.41"/>
+<circle cx="148.1" cy="54.8" r="1.4" fill="#cfe9f2" opacity="0.4"/>
+<circle cx="319.8" cy="99.0" r="1.1" fill="#cfe9f2" opacity="0.46"/>
+<circle cx="782.7" cy="30.9" r="1.4" fill="#cfe9f2" opacity="0.28"/>
+<circle cx="374.5" cy="40.6" r="1.1" fill="#cfe9f2" opacity="0.76"/>
+<circle cx="234.9" cy="134.4" r="1.1" fill="#cfe9f2" opacity="0.77"/>
+<circle cx="874.3" cy="247.1" r="1.1" fill="#cfe9f2" opacity="0.69"/>
+<circle cx="310.9" cy="78.6" r="1.4" fill="#cfe9f2" opacity="0.27"/>
+<circle cx="61.6" cy="171.6" r="1.4" fill="#cfe9f2" opacity="0.44" class="tw t0"/>
+<circle cx="240.3" cy="40.1" r="1.1" fill="#cfe9f2" opacity="0.39"/>
+<circle cx="865.3" cy="250.3" r="0.7" fill="#cfe9f2" opacity="0.62"/>
+<circle cx="590.0" cy="104.6" r="1.4" fill="#cfe9f2" opacity="0.52"/>
+<circle cx="483.5" cy="285.9" r="0.7" fill="#cfe9f2" opacity="0.26"/>
+<circle cx="132.7" cy="139.0" r="0.7" fill="#cfe9f2" opacity="0.63"/>
+<circle cx="480.8" cy="90.1" r="0.9" fill="#cfe9f2" opacity="0.55"/>
+<circle cx="432.8" cy="142.0" r="1.4" fill="#cfe9f2" opacity="0.72"/>
+<circle cx="924.1" cy="285.7" r="0.9" fill="#cfe9f2" opacity="0.75"/>
+<circle cx="845.6" cy="21.7" r="0.9" fill="#cfe9f2" opacity="0.74" class="tw t1"/>
+<circle cx="489.2" cy="90.1" r="1.4" fill="#cfe9f2" opacity="0.35"/>
+<circle cx="753.3" cy="90.2" r="1.4" fill="#cfe9f2" opacity="0.28"/>
+<circle cx="112.4" cy="278.8" r="1.1" fill="#cfe9f2" opacity="0.29"/>
+<circle cx="364.2" cy="193.8" r="1.1" fill="#cfe9f2" opacity="0.64"/>
+<circle cx="842.4" cy="128.1" r="1.1" fill="#cfe9f2" opacity="0.37"/>
+<circle cx="627.0" cy="91.3" r="1.1" fill="#cfe9f2" opacity="0.31"/>
+<circle cx="589.4" cy="150.8" r="0.9" fill="#cfe9f2" opacity="0.48"/>
+<circle cx="489.5" cy="247.0" r="1.4" fill="#cfe9f2" opacity="0.44"/>
+
+<!-- ringed planet, top right -->
+<g>
+  <circle cx="806" cy="96" r="34" fill="url(#pg)"/>
+  <ellipse cx="806" cy="96" rx="58" ry="14" fill="none" stroke="url(#ring)" stroke-width="2.5" transform="rotate(-16 806 96)"/>
+  <g class="orbit"><circle cx="856" cy="70" r="2.6" fill="#56d6e0"/></g>
+</g>
+
+<!-- HUD corner brackets -->
+<path d="M14,34 L14,14 L34,14" fill="none" stroke="#56d6e0" stroke-width="2"/>
+<path d="M926,14 L946,14 L946,34" fill="none" stroke="#56d6e0" stroke-width="2"/>
+<path d="M946,266 L946,286 L926,286" fill="none" stroke="#56d6e0" stroke-width="2"/>
+<path d="M34,286 L14,286 L14,266" fill="none" stroke="#56d6e0" stroke-width="2"/>
+<text x="40" y="30" class="cy" font-size="13" letter-spacing="3">BP-CORE // DEEP-SPACE OPERATIONS CONSOLE</text>
+<text x="920" y="30" text-anchor="end" class="dim" font-size="13">SOL-3</text>
+
+<!-- boot sequence -->
+<g class="l1"><text x="40" y="84"><tspan class="dim">&gt; </tspan><tspan class="out">boot sequence</tspan><tspan class="dim"> ................................. </tspan><tspan class="ok">ok</tspan></text></g>
+<g class="l2"><text x="40" y="112"><tspan class="dim">&gt; </tspan><tspan class="out">reactor</tspan><tspan class="dim"> nominal · </tspan><tspan class="out">hull</tspan><tspan class="dim"> nominal · </tspan><tspan class="out">coffee</tspan><tspan class="dim"> </tspan><tspan class="amb">critical</tspan></text></g>
+<g class="l3"><text x="40" y="140"><tspan class="dim">&gt; </tspan><tspan class="out">personality matrix loaded:</tspan><tspan class="dim"> engineer · terminal-native · star-curious</tspan></text></g>
+<g class="l4"><text x="40" y="168"><tspan class="dim">&gt; </tspan><tspan class="out">psychohistory module:</tspan><tspan class="dim"> the future is a distribution, not a promise</tspan></text></g>
+<g class="l5"><text x="40" y="196"><tspan class="mag">"Fear is the mind-killer."</tspan><tspan class="dim">  — archives/dune</tspan></text></g>
+<g class="l6"><text x="40" y="238"><tspan class="cy">bp@sol-3</tspan><tspan class="dim">:</tspan><tspan class="out">~</tspan><tspan class="dim">$ </tspan><tspan class="out">awaiting instructions</tspan></text><rect class="cursor" x="346" y="226" width="9" height="16"/></g>
+</svg>
