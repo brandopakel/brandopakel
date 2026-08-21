@@ -1,3 +1,7 @@
+<img src="assets/monolith_approach.png" width="100%" alt="The monolith approach — an alien dune field under a ringed gas giant; a corridor of monoliths with glowing cyan seams recedes to the horizon." />
+
+<p align="center"><sub>rendered in-house by <a href="assets/render_monolith_approach.py">a hand-written signed-distance-field raymarcher</a> — ~300 lines of numpy, no engine</sub></p>
+
 <img src="assets/console.svg" width="100%" alt="BP-CORE deep-space operations console — boot sequence ok; reactor nominal, hull nominal, coffee critical; personality matrix: engineer, terminal-native, star-curious; 'Fear is the mind-killer.'; awaiting instructions." />
 
 <p align="center"><em>somewhere between the terminal and the stars</em></p>
