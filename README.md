@@ -1,5 +1,3 @@
-### Brando Pakel
-
 [brando.pakel@gmail.com](mailto:brando.pakel@gmail.com)
 
 ---
